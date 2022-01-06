@@ -1,0 +1,38 @@
+package MavenSelenium.Selenium12;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+
+public class AmazonAutomation {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		//invoke driver
+	    System.setProperty("webdriver.chrome.driver", "C:\\\\Program Files\\\\Selenium\\chromedriver.exe");  
+	    
+	    //create driver instance
+		WebDriver driver = new ChromeDriver();
+		//implicit wait
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//navigate to URL
+		driver.get("https://www.amazon.in/");
+		
+		driver.findElement(By.xpath("//a[text() = 'Best Sellers']")).click();
+		driver.navigate().back();
+		driver.findElement(By.xpath("//a[contains(@href,\"/mobile-phones/b/?ie=UTF8&node=1389401031&ref_=nav_cs_mobiles\")]")).click();
+		//driver.navigate().back();
+		driver.findElement(By.xpath("//a[starts-with(@class,'nav-a nav-hasArrow')]")).click();
+		
+		driver.findElement(By.id("glow-ingress-block")).click();
+		driver.navigate().back();
+		
+		driver.close();
+	}
+
+}
